@@ -23,10 +23,10 @@ class Student {
         return grade;
     }
 
-    public Student(int studentId, String studentName, String course, int grade){
-       this.studentId = studentId;
-       this.studentName = studentName;
-       this.course = course;
-       this.grade = grade;
+    public Student(int studentId, String studentName, String course, int grade) {
+        this.studentId = studentId;
+        this.studentName = studentName;
+        this.course = course;
+        this.grade = grade;
     }
 }

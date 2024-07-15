@@ -5,11 +5,10 @@ import java.util.Arrays;
 
 
 public class FileService {
-    public static Student[] readStudents(String filename) throws IOException {
-        Student[] students;
-        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
 
-            students = new Student[100];
+    public static Student[] readStudents(String filename) throws IOException {
+        Student[] students= new Student[100];
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
             int index = 0;
             boolean isFirstLine = true;
@@ -41,24 +40,25 @@ public class FileService {
         }
         return students;
     }
-    public static void writeStudents (Student[]students, String filename){
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
-                String header = "Student ID, Student Name, Course, Grade";
-                writer.write(header);
-                writer.newLine();
-                System.out.println("Your files have been written successfully! by course and then by grade!");
-                //System.out.println(Arrays.toString(students));
 
-                for (Student student : students) {
-                    if (student == null)
-                        break;
-                    String line = student.getStudentId() + "," + student.getStudentName() + "," + student.getCourse() + "," + student.getGrade();
-                    writer.write(line);
-                    writer.newLine();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+    public static void writeStudents(Student[] students, String filename) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
+            String header = "Student ID, Student Name, Course, Grade";
+            writer.write(header);
+            writer.newLine();
+            System.out.println("Your files have been written successfully arranged by course and then by grade!");
+            //System.out.println(Arrays.toString(students)); Test to see if the array contains objects at this point
+
+            for (Student student : students) {
+                if (student == null)
+                    break;
+                String line = student.getStudentId() + "," + student.getStudentName() + "," + student.getCourse() + "," + student.getGrade();
+                writer.write(line);
+                writer.newLine();
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
+}
 

@@ -7,10 +7,12 @@ import java.util.Arrays;
 public class FileService {
 
     public static Student[] readStudents(String filename) throws IOException {
-        Student[] students= new Student[100];
+        Student[] students = new Student[100];
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
+            reader.readLine();
             int index = 0;
+
             boolean isFirstLine = true;
             while ((line = reader.readLine()) != null) {
                 if (isFirstLine) {
@@ -30,7 +32,7 @@ public class FileService {
                     int grade = Integer.parseInt(data[3].trim());
                     students[index++] = new Student(studentId, studentName, course, grade);
 
-                } catch (NumberFormatException e) {
+                } catch (Exception e) {
                     System.err.println("Invalid grade format: " + data[3]);
                     // Handle this case (e.g., set a default grade or skip the student)
                     // For now, let's set a default grade of 0:

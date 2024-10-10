@@ -10,7 +10,6 @@ public class FileService {
         Student[] students = new Student[100];
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
-            reader.readLine();
             int index = 0;
 
             boolean isFirstLine = true;
